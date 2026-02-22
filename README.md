@@ -1,48 +1,44 @@
-# FH Burgenland - BSWE - Kubernetes Demos
+# Hochschule Burgenland - Kubernetes Demos
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/fh-burgenland-bswe-kubernetes-demos/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos/actions/workflows/pipeline.yml)
 [![License](https://img.shields.io/github/license/muhlba91/fh-burgenland-bswe-kubernetes-demos?style=for-the-badge)](LICENSE.md)
 [![](https://api.scorecard.dev/projects/github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos)
 
-This repository contains demo applications for the course "Softwaremanagement II" at the FH Burgenland (BSWE) for Kubernetes.
+Demo applications and infrastructure setup for the courses at FH Burgenland.
 
----
+## Getting Started
 
-## Bootstrapping
+### 1. Cluster Bootstrap
 
-You need to have a Kubernetes cluster running and `kubectl` configured to access it.
+To start a local cluster, run one of the following bootstrap scripts:
 
-Note: you can use [`minikube.sh`](/minikube.sh) to start a local Minikube cluster.
+- **Minikube**: `./bootstrap/minikube.sh` (requires `minikube`)
+- **k0s**: `./bootstrap/k0s/bootstrap.sh` (requires `k0sctl`)
 
----
+### 2. Deployment Options
 
-## Wordpress
+#### Manual Deployment (Kubectl or Helm)
 
-The [`wordpress`](/wordpress/) application is a simple WordPress instance with a MySQL database.
+Each application includes `deploy.sh` and `destroy.sh` scripts in their respective `manifests` or `helm` directories.
 
-You will find manifests for installation with `kubectl` in the [`manifests`](/wordpress/manifests/) directory.
+- **WordPress**: `applications/wordpress/`
+- **Echo Service**: `applications/echo-service/`
 
-You will find manifests for installation with `helm` in the [`helm`](/wordpress/helm/) directory.
+#### GitOps with ArgoCD
 
-In each directory, you will find a `deploy.sh` which will deploy the application to your Kubernetes cluster, and a `destroy.sh` which will remove the application from your Kubernetes cluster.
+To deploy using ArgoCD:
 
----
+1. Deploy ArgoCD: `./argocd/[minikube|k0s]/deploy.sh`
+2. Retrieve the admin password (printed at the end of the script).
+3. Access the dashboard via `minikube tunnel` or `minikube service`.
 
-## ArgoCD
+## Applications
 
-The [`argocd`](/argocd/) application is a simple ArgoCD instance with `wordpress` configured as an `Application` using `helm`.
+- **[WordPress](applications/wordpress/)**: A WordPress instance with a MySQL database (StatefulSet).
+- **[Echo Service](applications/echo-service/)**: A simple echo application for testing deployments, HPA, and Ingress.
 
-You will find a `deploy.sh` which will deploy everything to your Kubernetes cluster, and a `destroy.sh` which will remove the everything from your Kubernetes cluster.
+## Automation & CI
 
----
-
-## Exercise
-
-The [`exercise`](/exercise/) directory is a simple echo application example to play around with Kubernetes.
-
----
-
-## Continuous Integration and Automations
-
-- [GitHub Actions](https://docs.github.com/en/actions) are linting all YAML files.
-- [Renovate Bot](https://github.com/renovatebot/renovate) is updating ArgoCD applications, container images, and GitHub Actions.
+- **Linting**: All YAML files are linted via [GitHub Actions](.github/workflows/pipeline.yml).
+- **Dependencies**: [Renovate](renovate.json) keeps container images and GitHub Actions up to date.
+- **Standards**: Uses `.pre-commit-config.yaml` and `.yamllint` for code quality.

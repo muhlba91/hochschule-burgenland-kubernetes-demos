@@ -1,0 +1,74 @@
+---
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: demo-cluster
+spec:
+  hosts:
+    # TODO: set the hosts to the actual IP addresses of the nodes in your cluster
+    - ssh:
+        address: 127.0.0.1
+        user: root
+        port: 22
+        # keyPath: ssh.key
+      privateAddress: 127.0.0.1
+      role: controller+worker
+      noTaints: true
+      installFlags:
+        - --disable-components konnectivity-server
+        - --labels="hostname=demo-cluster-001"
+  k0s:
+    version: v1.35.1+k0s.0
+    dynamicConfig: true
+    config:
+      apiVersion: k0s.k0sproject.io/v1beta1
+      kind: Cluster
+      metadata:
+        name: demo-cluster
+      spec:
+        api:
+          # TODO: set the externalAddress to the actual IP address or hostname of the API server
+          sans:
+            - 127.0.0.1
+          k0sApiPort: 9443
+          port: 6443
+        installConfig:
+          users:
+            etcdUser: etcd
+            kineUser: kube-apiserver
+            konnectivityUser: konnectivity-server
+            kubeAPIserverUser: kube-apiserver
+            kubeSchedulerUser: kube-scheduler
+        konnectivity:
+          adminPort: 8133
+          agentPort: 8132
+        network:
+          provider: custom
+          podCIDR: 10.245.0.0/16
+          serviceCIDR: 10.112.0.0/12
+          dualStack:
+            enabled: true
+            IPv6podCIDR: "fd85:ee78:d8a6:8607:11::0000/108"
+            IPv6serviceCIDR: "fd85:ee78:d8a6:8607:12::0000/108"
+          nodeLocalLoadBalancing:
+            enabled: true
+            type: EnvoyProxy
+          controlPlaneLoadBalancing:
+            enabled: false
+          kubeProxy:
+            disabled: true
+            mode: ipvs
+            ipvs:
+              strictARP: true
+          kuberouter:
+            autoMTU: true
+            mtu: 0
+            peerRouterASNs: ""
+            peerRouterIPs: ""
+        podSecurityPolicy:
+          defaultPolicy: 00-k0s-privileged
+        featureGates: []
+        storage:
+          type: etcd
+        telemetry:
+          enabled: false

@@ -9,10 +9,11 @@ metadata:
     app.kubernetes.io/component: echo
   annotations: # TODO: ingress annotations
     external-dns.alpha.kubernetes.io/provider: public
-    external-dns.alpha.kubernetes.io/target: 178.63.69.250,2a01:4f8:121:14e2:100:3:3:1
+    external-dns.alpha.kubernetes.io/target: 127.0.0.1
 spec:
   rules:
-    - host: echo.demo.cluster.classroom.bswe.hochschule-burgenland.muehlbachler.xyz
+    # TODO: add host to route traffic to the echo service
+    - host: echo.demo.cluster.classroom.hochschule-burgenland.muehlbachler.xyz
       http:
         paths:
           - backend:

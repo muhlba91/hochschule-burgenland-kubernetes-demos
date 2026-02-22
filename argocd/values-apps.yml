@@ -16,10 +16,17 @@ applications:
         helm:
           releaseName: wordpress
           valueFiles:
-            - $values/wordpress/helm/values.yml
+            - $values/applications/wordpress/helm/values.yml
       - ref: values
         repoURL: https://github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos.git
         targetRevision: HEAD
+    ignoreDifferences:
+      - group: ""
+        kind: Secret
+        name: wordpress-mariadb
+        jsonPointers:
+          - /data/mariadb-password
+          - /data/mariadb-root-password
     syncPolicy:
       automated:
         prune: false

@@ -4,9 +4,7 @@ extends: default
 ignore:
   - .github/
   - .pre-commit-config.yaml
-  - vclusters/
-  - argocd/library/charts
-  - exercise/helm/
+  - applications/echo-service/helm/
 
 rules:
   line-length:
