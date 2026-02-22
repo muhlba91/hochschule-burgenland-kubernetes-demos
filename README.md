@@ -1,8 +1,8 @@
 # Hochschule Burgenland - Kubernetes Demos
 
-[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/fh-burgenland-bswe-kubernetes-demos/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos/actions/workflows/pipeline.yml)
-[![License](https://img.shields.io/github/license/muhlba91/fh-burgenland-bswe-kubernetes-demos?style=for-the-badge)](LICENSE.md)
-[![](https://api.scorecard.dev/projects/github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos)
+[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/hochschule-burgenland-kubernetes-demos/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/hochschule-burgenland-kubernetes-demos/actions/workflows/pipeline.yml)
+[![License](https://img.shields.io/github/license/muhlba91/hochschule-burgenland-kubernetes-demos?style=for-the-badge)](LICENSE.md)
+[![](https://api.scorecard.dev/projects/github.com/muhlba91/hochschule-burgenland-kubernetes-demos/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/hochschule-burgenland-kubernetes-demos)
 
 Demo applications and infrastructure setup for the courses at FH Burgenland.
 
@@ -10,10 +10,11 @@ Demo applications and infrastructure setup for the courses at FH Burgenland.
 
 ### 1. Cluster Bootstrap
 
-To start a local cluster, run one of the following bootstrap scripts:
+To start a cluster, run one of the following bootstrap scripts:
 
 - **Minikube**: `./bootstrap/minikube.sh` (requires `minikube`)
 - **k0s**: `./bootstrap/k0s/bootstrap.sh` (requires `k0sctl`)
+- **GKE**: `./bootstrap/gke/bootstrap.sh` (requires `terraform` and `gcloud`)
 
 ### 2. Deployment Options
 
@@ -28,9 +29,9 @@ Each application includes `deploy.sh` and `destroy.sh` scripts in their respecti
 
 To deploy using ArgoCD:
 
-1. Deploy ArgoCD: `./argocd/[minikube|k0s]/deploy.sh`
+1. Deploy ArgoCD: `./argocd/[minikube|k0s|default]/deploy.sh`
 2. Retrieve the admin password (printed at the end of the script).
-3. Access the dashboard via `minikube tunnel` or `minikube service`.
+3. Access the dashboard via `minikube tunnel` or `minikube service` (for local clusters) or via the external IP (for GKE).
 
 ## Applications
 

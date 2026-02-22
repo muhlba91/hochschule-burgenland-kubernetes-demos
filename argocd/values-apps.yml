@@ -18,7 +18,7 @@ applications:
           valueFiles:
             - $values/applications/wordpress/helm/values.yml
       - ref: values
-        repoURL: https://github.com/muhlba91/fh-burgenland-bswe-kubernetes-demos.git
+        repoURL: https://github.com/muhlba91/hochschule-burgenland-kubernetes-demos.git
         targetRevision: HEAD
     ignoreDifferences:
       - group: ""

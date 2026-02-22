@@ -8,6 +8,7 @@
         "helm-values",
         "helmv3",
         "argocd",
+        "terraform",
         "github-actions",
         "pre-commit"
     ]

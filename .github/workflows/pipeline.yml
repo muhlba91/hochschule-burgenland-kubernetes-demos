@@ -11,9 +11,9 @@ permissions:
   contents: read
 
 jobs:
-  lint:
+  yamllint:
     runs-on: ubuntu-latest
-    name: Lint
+    name: Lint YAML
 
     steps:
       - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
@@ -26,3 +26,27 @@ jobs:
 
       - run: |
           yamllint .
+
+  tflint:
+    runs-on: ubuntu-latest
+    name: Lint Terraform
+
+    steps:
+      - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+
+      - uses: terraform-linters/setup-tflint@v6
+
+      - run: |
+          tflint --init
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - run: |
+          tflint
+        working-directory: ./bootstrap/gke

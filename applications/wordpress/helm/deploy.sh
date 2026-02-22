@@ -6,3 +6,5 @@ HELM_KUBECONTEXT=minikube helm upgrade --install -n wordpress-helm --create-name
 # to expose wordpress open the chosen method in a new terminal:
 # - minikube tunnel
 # - minikube service -n wordpress-helm wordpress --url
+# or use kubectl port-forward:
+# kubectl -n wordpress-helm port-forward service/wordpress 28015:443

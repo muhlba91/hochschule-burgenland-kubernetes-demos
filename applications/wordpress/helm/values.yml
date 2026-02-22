@@ -11,8 +11,21 @@ persistence:
 volumePermissions:
   enabled: true
 
+resources:
+  limits:
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 64Mi
+
 mariadb:
   primary:
     persistence:
       storageClass: standard
       size: 500Mi
+    resources:
+      limits:
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
