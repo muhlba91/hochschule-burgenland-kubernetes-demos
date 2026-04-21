@@ -1,0 +1,5 @@
+kubectl exec -it <POD_NAME> -- /bin/bash
+gcloud storage ls gs://<BUCKET_NAME>
+echo "test" > file.txt
+gcloud storage cp file.txt gs://<BUCKET_NAME>
+gcloud storage ls gs://<BUCKET_NAME>

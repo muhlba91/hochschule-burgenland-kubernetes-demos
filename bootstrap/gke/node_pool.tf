@@ -20,7 +20,7 @@ resource "google_container_node_pool" "node_pool" {
 
   node_config {
     spot         = true
-    machine_type = "n4-standard-2"
+    machine_type = "e2-standard-2"
 
     boot_disk {
       disk_type = "pd-balanced"

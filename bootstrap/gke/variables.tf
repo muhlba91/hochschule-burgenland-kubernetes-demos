@@ -12,3 +12,15 @@ variable "zone" {
   type        = string
   default     = "europe-west4-a"
 }
+
+variable "k8s_namespace" {
+  description = "kubernetes namespace"
+  type        = string
+  default     = "default"
+}
+
+variable "k8s_service_account_name" {
+  description = "kubernetes service account name"
+  type        = string
+  default     = "gcs-reader"
+}

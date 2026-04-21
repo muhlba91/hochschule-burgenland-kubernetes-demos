@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcs-reader
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gcs-reader
+  template:
+    metadata:
+      labels:
+        app: gcs-reader
+    spec:
+      serviceAccountName: gcs-reader
+      containers:
+        - name: gcs-reader
+          image: google/cloud-sdk:slim
+          command:
+            - sleep
+            - infinity
+          resources:
+            limits:
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi

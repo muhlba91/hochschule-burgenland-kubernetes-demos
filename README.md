@@ -24,6 +24,7 @@ Each application includes `deploy.sh` and `destroy.sh` scripts in their respecti
 
 - **WordPress**: `applications/wordpress/`
 - **Echo Service**: `applications/echo-service/`
+- **GCS Reader**: `applications/gcs-reader/` (manifests only)
 
 #### GitOps with ArgoCD
 
@@ -37,6 +38,7 @@ To deploy using ArgoCD:
 
 - **[WordPress](applications/wordpress/)**: A WordPress instance with a MySQL database (StatefulSet).
 - **[Echo Service](applications/echo-service/)**: A simple echo application for testing deployments, HPA, and Ingress.
+- **[GCS Reader](applications/gcs-reader/)**: An application for reading from Google Cloud Storage.
 
 ## Automation & CI
 

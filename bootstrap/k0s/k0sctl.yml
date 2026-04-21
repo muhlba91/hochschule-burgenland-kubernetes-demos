@@ -18,7 +18,7 @@ spec:
         - --disable-components konnectivity-server
         - --labels="hostname=demo-cluster-001"
   k0s:
-    version: v1.35.1+k0s.0
+    version: v1.35.3+k0s.0
     dynamicConfig: true
     config:
       apiVersion: k0s.k0sproject.io/v1beta1
