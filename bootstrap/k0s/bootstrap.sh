@@ -12,5 +12,5 @@ helm repo update
 helm install --kubeconfig=./admin.conf --namespace=cilium --create-namespace cilium cilium/cilium --values values-cilium.yml || true
 
 # install path provisioner
-kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
-kubectl apply -f storageclass.yml
+kubectl --kubeconfig=./admin.conf apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl --kubeconfig=./admin.conf apply -f storageclass.yml
