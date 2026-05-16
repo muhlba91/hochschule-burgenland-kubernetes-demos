@@ -3,7 +3,11 @@
 wordpressPassword: password
 
 service:
-  type: NodePort
+  type: LoadBalancer
+
+wordpressExtraEnvVars:
+  - name: WORDPRESS_EXTRA_WP_CONFIG_CONTENT
+    value: "define('WP_HOME','http://wordpress.andreas.mcce.werschlan.at'); define('WP_SITEURL','http://wordpress.andreas.mcce.werschlan.at');"
 
 persistence:
   storageClass: standard
