@@ -1,0 +1,9 @@
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: wordpress-managed-cert
+  namespace: wordpress-argocd
+spec:
+  domains:
+    - wordpress.andreas.mcce.werschlan.at

@@ -3,11 +3,41 @@
 wordpressPassword: password
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: ""
+  hostname: wordpress.andreas.mcce.werschlan.at
+  path: /
+  pathType: Prefix
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.allow-http: "true"
+    networking.gke.io/managed-certificates: wordpress-managed-cert
+    networking.gke.io/v1beta1.FrontendConfig: wordpress-frontend-config
+  tls: false
+
+extraDeploy:
+  - apiVersion: networking.gke.io/v1
+    kind: ManagedCertificate
+    metadata:
+      name: wordpress-managed-cert
+    spec:
+      domains:
+        - wordpress.andreas.mcce.werschlan.at
+  - apiVersion: networking.gke.io/v1beta1
+    kind: FrontendConfig
+    metadata:
+      name: wordpress-frontend-config
+    spec:
+      redirectToHttps:
+        enabled: true
+        responseCodeName: MOVED_PERMANENTLY_DEFAULT
 
 wordpressExtraEnvVars:
   - name: WORDPRESS_EXTRA_WP_CONFIG_CONTENT
-    value: "define('WP_HOME','http://wordpress.andreas.mcce.werschlan.at'); define('WP_SITEURL','http://wordpress.andreas.mcce.werschlan.at');"
+    value: "define('WP_HOME','https://wordpress.andreas.mcce.werschlan.at'); define('WP_SITEURL','https://wordpress.andreas.mcce.werschlan.at');"
 
 persistence:
   storageClass: standard
