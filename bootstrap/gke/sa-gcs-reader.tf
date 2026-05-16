@@ -20,4 +20,10 @@ resource "google_service_account_iam_member" "gcs_reader_workload_identity" {
   service_account_id = google_service_account.gcs_reader.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "serviceAccount:${var.project_id}.svc.id.goog[${var.k8s_namespace}/${var.k8s_service_account_name}]"
+
+  # Workload Identity pool is provisioned with the GKE cluster, not when the SA is created.
+  depends_on = [
+    google_container_cluster.cluster,
+    google_container_node_pool.node_pool,
+  ]
 }
