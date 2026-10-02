@@ -6,6 +6,7 @@ metadata:
   namespace: echo
   annotations:
     cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-xyz
+    external-dns.kubernetes.io/provider: public
 spec:
   parentRef:
     group: gateway.networking.k8s.io
