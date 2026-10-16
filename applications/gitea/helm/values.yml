@@ -22,6 +22,9 @@ resources:
     cpu: 10m
     memory: 128Mi
 
+postgresql-ha:
+  enabled: false
+
 postgresql:
   enabled: true
   primary:
@@ -34,3 +37,10 @@ postgresql:
       requests:
         cpu: 10m
         memory: 64Mi
+
+valkey-cluster:
+  enabled: false
+
+valkey:
+  enabled: true
+  architecture: standalone

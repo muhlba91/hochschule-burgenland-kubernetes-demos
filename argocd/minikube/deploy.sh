@@ -17,6 +17,8 @@ HELM_KUBECONTEXT=minikube helm upgrade --install \
   argocd-apps \
   argo/argocd-apps
 
+sleep 10
+
 # to find the argocd admin password run:
 echo "ArgoCD admin password: $(kubectl --context minikube -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo)"
 
