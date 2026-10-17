@@ -2,7 +2,7 @@
 set -eou pipefail
 
 helm repo add gitea https://dl.gitea.com/charts/ || true
-helm repo update
+# helm repo update
 
 HELM_KUBECONTEXT=minikube helm upgrade --install \
   -n gitea-helm \

@@ -8,7 +8,7 @@ k0sctl kubeconfig --config k0sctl.yml > ./admin.conf
 
 # install cilium
 helm repo add cilium https://helm.cilium.io/
-helm repo update
+# helm repo update
 helm install --kubeconfig=./admin.conf --namespace=cilium --create-namespace cilium cilium/cilium --values values-cilium.yml || true
 
 # install path provisioner

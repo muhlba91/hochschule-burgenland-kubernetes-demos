@@ -2,7 +2,7 @@
 set -eou pipefail
 
 helm repo add argo https://argoproj.github.io/argo-helm
-helm repo update
+# helm repo update
 
 helm upgrade --install \
   -n argocd \

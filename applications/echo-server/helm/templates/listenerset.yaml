@@ -1,0 +1,20 @@
+{{- if .Values.listenerSet.enabled -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: ListenerSet
+metadata:
+  name: {{ include "..fullname" . }}-listener
+  labels:
+    {{- include "..labels" . | nindent 4 }}
+  {{- with .Values.listenerSet.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  parentRef:
+    group: {{ .Values.listenerSet.parentRef.group | default "gateway.networking.k8s.io" }}
+    kind: {{ .Values.listenerSet.parentRef.kind | default "Gateway" }}
+    name: {{ .Values.listenerSet.parentRef.name }}
+    namespace: {{ .Values.listenerSet.parentRef.namespace }}
+  listeners:
+    {{- toYaml .Values.listenerSet.listeners | nindent 4 }}
+{{- end }}

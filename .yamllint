@@ -4,7 +4,8 @@ extends: default
 ignore:
   - .github/
   - .pre-commit-config.yaml
-  - applications/echo-service/helm/
+  - applications/http-echo/helm/
+  - applications/echo-server/helm/
 
 rules:
   line-length:

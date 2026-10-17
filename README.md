@@ -32,6 +32,7 @@ Applications currently included:
 
 - **Gitea** (`applications/gitea/`): Git hosting with a PostgreSQL database demonstrating Deployments, StatefulSets, Services, Secrets, and Persistent Volumes.
 - **Echo Service** (`applications/echo-service/`): A lightweight HTTP application demonstrating Deployments, Services, Ingress, Gateway API, HTTPRoute, and ListenerSet resources.
+- **Echo Server** (`applications/echo-server/`): A lightweight HTTP application demonstrating Deployments, ConfigMaps, Services, Ingress, Gateway API, HTTPRoute, and ListenerSet resources.
 - **GCS Reader** (`applications/gcs-reader/`): A simple application demonstrating access to Google Cloud Storage using Kubernetes manifests.
 
 ### GitOps with ArgoCD
