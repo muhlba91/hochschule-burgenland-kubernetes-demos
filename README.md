@@ -89,3 +89,7 @@ The repository uses:
 
 - `.pre-commit-config.yaml` for local pre-commit hooks.
 - `.yamllint` for YAML style and formatting rules.
+
+## Development
+
+Tool versions (Helm, kubeconform, tflint) are managed with [mise](https://mise.jdx.dev): run `mise trust` and `mise install` once, then use the usual commands (`helm lint`, `kubeconform`, `tflint`).
