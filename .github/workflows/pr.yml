@@ -58,9 +58,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5
-        with:
-          version: latest
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
 
       - run: |
           for chart_dir in applications/*/helm; do
@@ -89,7 +87,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: bmuschko/setup-kubeconform@e5d264ec1eafe2314e750c429a9da7639dd5a003 # v1
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
 
       - run: |
           for dir in applications/*/manifests; do
@@ -113,11 +111,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5
-        with:
-          version: latest
-
-      - uses: bmuschko/setup-kubeconform@e5d264ec1eafe2314e750c429a9da7639dd5a003 # v1
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
 
       - run: |
           mkdir -p rendered
@@ -156,7 +150,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: terraform-linters/setup-tflint@6ffdbaa3be476b3431f7275c26966ef32ff60337 # v6
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
 
       - run: |
           tflint --init
