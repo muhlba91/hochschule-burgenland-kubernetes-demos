@@ -8,13 +8,28 @@ Demo applications and infrastructure setup for the courses at FH Burgenland.
 
 ## Getting Started
 
+### Prerequisites
+
+[mise](https://mise.jdx.dev) provides `argocd`, `helm`, `k0sctl`, `kubeconform`, `terraform` and `tflint`: run `mise trust` and `mise install` once. `kubectl`, `minikube` and `gcloud` come from your local installation.
+
+For GKE, log in with your Google account and set the project once:
+
+```bash
+gcloud auth login
+gcloud auth application-default login
+gcloud config set project <project-id>
+export TF_VAR_project_id=<project-id>
+```
+
+Terraform and `kubectl` use these application default credentials; no key file is needed. For `kubectl` access to the cluster, install the auth plugin with `gcloud components install gke-gcloud-auth-plugin`.
+
 ### 1. Cluster Bootstrap
 
 To start a cluster, run one of the following bootstrap scripts:
 
 - **Minikube**: `./bootstrap/minikube.sh` (requires `minikube`)
 - **k0s**: `./bootstrap/k0s/bootstrap.sh` (requires `k0sctl`)
-- **GKE**: `./bootstrap/gke/bootstrap.sh` (requires `terraform` and `gcloud`)
+- **GKE**: `./bootstrap/gke/bootstrap.sh` (requires `terraform`, `gcloud` and the login above)
 
 ### 2. Deployment Options
 
@@ -92,4 +107,4 @@ The repository uses:
 
 ## Development
 
-Tool versions (Helm, kubeconform, tflint) are managed with [mise](https://mise.jdx.dev): run `mise trust` and `mise install` once, then use the usual commands (`helm lint`, `kubeconform`, `tflint`).
+Tool versions (ArgoCD, Helm, k0sctl, kubeconform, Terraform, tflint) are managed with mise: run `mise trust` and `mise install` once, then use the usual commands (`helm lint`, `kubeconform`, `tflint`).
