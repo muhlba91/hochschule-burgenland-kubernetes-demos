@@ -25,11 +25,13 @@ Terraform and `kubectl` use these application default credentials; no key file i
 
 ### 1. Cluster Bootstrap
 
-To start a cluster, run one of the following bootstrap scripts:
+The scripts use relative paths: run each one from its own directory. Start a cluster with one of them:
 
-- **Minikube**: `./bootstrap/minikube.sh` (requires `minikube`)
-- **k0s**: `./bootstrap/k0s/bootstrap.sh` (requires `k0sctl`)
-- **GKE**: `./bootstrap/gke/bootstrap.sh` (requires `terraform`, `gcloud` and the login above)
+- **Minikube**: `./bootstrap/minikube.sh` (requires `minikube` and `kubectl`)
+- **k0s**: set the host addresses in `bootstrap/k0s/k0sctl.yml`, then run `cd bootstrap/k0s && ./bootstrap.sh` (requires `k0sctl`, `helm` and `kubectl`); it writes the kubeconfig to `admin.conf`
+- **GKE**: `cd bootstrap/gke`, run `terraform init` once, then `./bootstrap.sh` (requires `terraform`, `gcloud` and the login above); it adds the cluster to your kubeconfig
+
+Remove a cluster with `destroy.sh` in the same directory (`minikube stop` for Minikube).
 
 ### 2. Deployment Options
 
@@ -41,7 +43,7 @@ Applications are available using different Kubernetes deployment approaches:
 
 ### Manual Deployment (Kubectl or Helm)
 
-Each application includes `deploy.sh` and `destroy.sh` scripts in their respective `manifests` or `helm` directories.
+Each application includes `deploy.sh` and `destroy.sh` scripts in their respective `manifests` or `helm` directories; run them from there.
 
 Applications currently included:
 
@@ -57,7 +59,8 @@ To deploy using ArgoCD:
 1. Deploy ArgoCD:
 
    ```bash
-   ./argocd/[minikube|default]/deploy.sh
+   cd argocd/[minikube|default]
+   ./deploy.sh
    ```
 
 2. Retrieve the initial admin password (printed at the end of the deployment script).
