@@ -1,0 +1,4 @@
+---
+default: true
+# paragraphs are one line each, so no hard wrap limit
+MD013: false

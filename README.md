@@ -2,7 +2,7 @@
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/hochschule-burgenland-kubernetes-demos/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/hochschule-burgenland-kubernetes-demos/actions/workflows/pipeline.yml)
 [![License](https://img.shields.io/github/license/muhlba91/hochschule-burgenland-kubernetes-demos?style=for-the-badge)](LICENSE.md)
-[![](https://api.scorecard.dev/projects/github.com/muhlba91/hochschule-burgenland-kubernetes-demos/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/hochschule-burgenland-kubernetes-demos)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/muhlba91/hochschule-burgenland-kubernetes-demos/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/hochschule-burgenland-kubernetes-demos)
 
 Demo applications and infrastructure setup for the courses at FH Burgenland.
 

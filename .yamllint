@@ -3,6 +3,7 @@ extends: default
 
 ignore:
   - .github/
+  - .mise/
   - .pre-commit-config.yaml
   - applications/http-echo/helm/
   - applications/echo-server/helm/
