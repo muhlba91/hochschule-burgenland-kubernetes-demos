@@ -66,26 +66,27 @@ checksum = "sha256:6f3421de3a8cc2ac578c8cfb33b8edde290dde2871bc1bab12e24f2e5caea
 url = "https://get.helm.sh/helm-v4.3.2-darwin-arm64.tar.gz"
 
 [[tools.k0sctl]]
-version = "0.33.1"
+version = "0.34.0"
 backend = "aqua:k0sproject/k0sctl"
-specifiers = ["0.33.1"]
+specifiers = ["0.34.0"]
 
 [tools.k0sctl."platforms.linux-arm64"]
-checksum = "sha256:3632072361f3e83dde9b34f83eea49673d3bfe84763cf361edc3aec7209231a6"
+checksum = "sha256:485b977ac406e040a5db4e314d142a3a5db382a8af5085fe4d39404f7ab9c585"
 checksum_source = "mise-versions"
-url = "https://github.com/k0sproject/k0sctl/releases/download/v0.33.1/k0sctl-linux-arm64"
-url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/578938981"
+url = "https://github.com/k0sproject/k0sctl/releases/download/v0.34.0/k0sctl-linux-arm64"
+url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/800189639"
 
 [tools.k0sctl."platforms.linux-x64"]
-checksum = "sha256:bd5cd9125c93d8d30c33f7b2f3693fed0d74140a248d433dad74f2b7015295b5"
+checksum = "sha256:49439684e52a601924136ae8aa4aff81330c1976de8fe21d8a9a687fd68058ba"
 checksum_source = "mise-versions"
-url = "https://github.com/k0sproject/k0sctl/releases/download/v0.33.1/k0sctl-linux-amd64"
-url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/578938984"
+url = "https://github.com/k0sproject/k0sctl/releases/download/v0.34.0/k0sctl-linux-amd64"
+url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/800189629"
 
 [tools.k0sctl."platforms.macos-arm64"]
-checksum = "sha256:d5e9d8663c84e3e34fc3f3b032d7f97e372cda0ecd31b363f937b0bbed18f473"
-url = "https://github.com/k0sproject/k0sctl/releases/download/v0.33.1/k0sctl-darwin-arm64"
-url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/578938980"
+checksum = "sha256:e4d4b60b3ddcdccedf318244065c5c1ad5c935e5c4a1b0016e4ac720b0418f41"
+checksum_source = "mise-versions"
+url = "https://github.com/k0sproject/k0sctl/releases/download/v0.34.0/k0sctl-darwin-arm64"
+url_api = "https://api.github.com/repos/k0sproject/k0sctl/releases/assets/800189631"
 
 [[tools.kubeconform]]
 version = "0.8.0"
